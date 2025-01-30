@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Voting Results</h2>
+    <div class="results-list">
+        {% for issue in issues %}
+        <div class="result-item">
+            <h3>{{ issue.title }}</h3>
+            <p>Votes: {{ issue.votes }}</p>
+        </div>
+        {% endfor %}
+    </div>
+    <a href="{{ url_for('index') }}" class="button">Back to List</a>
+{% endblock %}
