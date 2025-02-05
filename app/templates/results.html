@@ -1,14 +1,36 @@
 {% extends "base.html" %}
 
+{% block title %}Voting Results - Voting App{% endblock %}
+
+{% block extra_head %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='results.css') }}">
+{% endblock %}
+
 {% block content %}
+<section class="results">
+  <header>
     <h2>Voting Results</h2>
-    <div class="results-list">
-        {% for issue in issues %}
-        <div class="result-item">
-            <h3>{{ issue.title }}</h3>
-            <p>Votes: {{ issue.votes }}</p>
+  </header>
+  <section class="results-list">
+    {% for result in results %}
+      <div class="result-item">
+        <div class="issue-title">{{ result.issue.title }}</div>
+        <div class="bar-chart">
+          <div class="bar support" data-width="{{ (result.agree / result.total * 100) if result.total > 0 else 0 }}">
+            {{ result.agree }}%
+          </div>
+          <div class="bar neutral" data-width="{{ (result.not_sure / result.total * 100) if result.total > 0 else 0 }}">
+            {{ result.not_sure }}%
+          </div>
+          <div class="bar oppose" data-width="{{ (result.disagree / result.total * 100) if result.total > 0 else 0 }}">
+            {{ result.disagree }}%
+          </div>
         </div>
-        {% endfor %}
-    </div>
+      </div>
+    {% endfor %}
+  </section>
+  <footer class="results-footer">
     <a href="{{ url_for('index') }}" class="button">Back to List</a>
+  </footer>
+</section>
 {% endblock %}

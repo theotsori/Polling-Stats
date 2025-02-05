@@ -58,9 +58,13 @@ class Issue(db.Model):
 
 class UserVote(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    issue_id = db.Column(db.Integer, db.ForeignKey('issue.id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    issue_id = db.Column(db.Integer, db.ForeignKey('issue.id'), nullable=False)
+    vote_type = db.Column(db.String(10), nullable=False)  # 'agree', 'not_sure', 'disagree'
     voted_at = db.Column(db.DateTime, default=datetime.utcnow)
+    
+    user = db.relationship('User', backref='votes')
+    issue = db.relationship('Issue', backref='user_votes')
 
 # -------------------------
 # Flask-Admin Setup
@@ -170,21 +174,46 @@ def add_issue():
 @login_required
 def vote(issue_id):
     issue = Issue.query.get_or_404(issue_id)
+    vote_type = request.form.get('vote_type')
+    
+    if vote_type not in ['agree', 'not_sure', 'disagree']:
+        flash('Invalid vote option.', 'error')
+        return redirect(url_for('index'))
+    
     existing_vote = UserVote.query.filter_by(user_id=current_user.id, issue_id=issue_id).first()
-    if not existing_vote:
-        issue.votes += 1
-        new_vote = UserVote(user_id=current_user.id, issue_id=issue_id)
+
+    if existing_vote:
+        flash('You have already voted on this issue.', 'warning')
+    else:
+        new_vote = UserVote(user_id=current_user.id, issue_id=issue_id, vote_type=vote_type)
         db.session.add(new_vote)
         db.session.commit()
         flash('Your vote has been recorded!', 'success')
-    else:
-        flash('You have already voted on this issue.', 'warning')
+    
     return redirect(url_for('index'))
 
 @app.route('/results')
 def results():
-    issues = Issue.query.order_by(Issue.votes.desc()).all()
-    return render_template('results.html', issues=issues)
+    # Fetch voting results from the database
+    results_data = db.session.query(
+        Issue.title,
+        db.func.count(UserVote.id).filter(UserVote.vote_type == "agree").label("agree"),
+        db.func.count(UserVote.id).filter(UserVote.vote_type == "not_sure").label("not_sure"),
+        db.func.count(UserVote.id).filter(UserVote.vote_type == "disagree").label("disagree"),
+        db.func.count(UserVote.id).label("total")
+    ).join(UserVote).group_by(Issue.title).all()
+
+    results = []
+    for row in results_data:
+        results.append({
+            "issue": {"title": row.title},
+            "agree": row.agree,
+            "not_sure": row.not_sure,
+            "disagree": row.disagree,
+            "total": row.total
+        })
+
+    return render_template("results.html", results=results)
 
 # -------------------------
 # Run the Application

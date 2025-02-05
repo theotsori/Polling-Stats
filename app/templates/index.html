@@ -1,20 +1,40 @@
 {% extends "base.html" %}
 
+{% block title %}Home - Voting App{% endblock %}
+
+{% block extra_head %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+{% endblock %}
+
 {% block content %}
+<section class="actions">
     <a href="{{ url_for('add_issue') }}" class="button">Add New Issue</a>
-    <div class="issues-list">
+</section>
+
+<section class="issues-list">
+    {% if issues %}
         {% for issue in issues %}
-        <div class="issue">
-            <h3>{{ issue.title }}</h3>
+        <article class="issue">
+            <header>
+                <h3>{{ issue.title }}</h3>
+            </header>
             <p>{{ issue.description }}</p>
-            <div class="vote-section">
+            <footer class="vote-section">
                 <span>Votes: {{ issue.votes }}</span>
-                <form action="{{ url_for('vote', issue_id=issue.id) }}" method="post">
-                    <button type="submit" class="vote-button">Vote</button>
-                </form>
-            </div>
-        </div>
+                <form action="{{ url_for('vote', issue_id=issue.id) }}" method="POST">
+                    <button type="submit" name="vote_type" value="agree" class="btn btn-success">Agree</button>
+                    <button type="submit" name="vote_type" value="not_sure" class="btn btn-warning">Not Sure</button>
+                    <button type="submit" name="vote_type" value="disagree" class="btn btn-danger">Disagree</button>
+                </form>                
+            </footer>
+        </article>
         {% endfor %}
-    </div>
+    {% else %}
+        <p>No issues found. Please add an issue.</p>
+    {% endif %}
+</section>
+
+<section class="results-link">
     <a href="{{ url_for('results') }}" class="button">View Results</a>
+</section>
 {% endblock %}

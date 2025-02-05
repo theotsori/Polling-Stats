@@ -1,0 +1,73 @@
+/* General Styling */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+/* Container for Page Content */
+.container {
+    max-width: 900px;
+    margin: 40px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Auth Links Styling */
+.auth-links {
+    display: flex;
+    justify-content: flex-end;
+    padding: 15px;
+    background: #333;
+    color: white;
+}
+
+.auth-links a {
+    color: #f0f0f0;
+    text-decoration: none;
+    margin-left: 15px;
+    font-weight: bold;
+}
+
+.auth-links a:hover {
+    color: #4CAF50;
+}
+
+/* Flash Messages */
+.flash-messages {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.flash {
+    padding: 10px 20px;
+    margin: 5px;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+}
+
+.flash.error { background-color: #e74c3c; }
+.flash.success { background-color: #2ecc71; }
+.flash.info { background-color: #3498db; }
+
+/* Buttons */
+.button {
+    display: inline-block;
+    padding: 12px 20px;
+    background: #4CAF50;
+    color: white;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background 0.3s ease;
+}
+
+.button:hover {
+    background: #388E3C;
+}

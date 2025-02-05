@@ -1,0 +1,52 @@
+/* Issues List */
+.issues-list {
+    margin-top: 20px;
+}
+
+.issue {
+    background: white;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-left: 6px solid #4CAF50;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.issue h3 {
+    margin: 0;
+    color: #333;
+}
+
+.issue p {
+    color: #666;
+    margin: 10px 0;
+}
+
+/* Voting Section */
+.vote-section {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.vote-button {
+    background-color: #2196F3;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.vote-button:hover {
+    background-color: #0b7dda;
+}
+
+/* Results Button */
+.view-results {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+}

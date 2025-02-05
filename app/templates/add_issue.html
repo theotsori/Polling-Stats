@@ -1,5 +1,11 @@
 {% extends "base.html" %}
 
+{% block title %}Home - Voting App{% endblock %}
+
+{% block extra_head %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+{% endblock %}
+
 {% block content %}
     <form method="POST" class="issue-form">
         <h2>Add New Issue</h2>
