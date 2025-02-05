@@ -22,9 +22,9 @@
             <footer class="vote-section">
                 <span>Votes: {{ issue.votes }}</span>
                 <form action="{{ url_for('vote', issue_id=issue.id) }}" method="POST">
-                    <button type="submit" name="vote_type" value="agree" class="btn btn-success">Agree</button>
-                    <button type="submit" name="vote_type" value="not_sure" class="btn btn-warning">Not Sure</button>
-                    <button type="submit" name="vote_type" value="disagree" class="btn btn-danger">Disagree</button>
+                    <button type="submit" name="vote_type" value="agree" class="btn btn-success">Support</button>
+                    <button type="submit" name="vote_type" value="not_sure" class="btn btn-warning">Don't Know</button>
+                    <button type="submit" name="vote_type" value="disagree" class="btn btn-danger">Oppose</button>
                 </form>                
             </footer>
         </article>

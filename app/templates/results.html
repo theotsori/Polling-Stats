@@ -4,33 +4,41 @@
 
 {% block extra_head %}
   <link rel="stylesheet" href="{{ url_for('static', filename='results.css') }}">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 {% endblock %}
 
 {% block content %}
-<section class="results">
-  <header>
-    <h2>Voting Results</h2>
+<section class="results-container">
+  <header class="text-center">
+    <h2 class="title">Support for Executive Orders and Proposed Actions</h2>
+    <div class="legend">
+      <span class="legend-item"><span class="color-box support"></span> Support</span>
+      <span class="legend-item"><span class="color-box neutral"></span> Don't Know / Refused</span>
+      <span class="legend-item"><span class="color-box oppose"></span> Oppose</span>
+    </div>
   </header>
+
   <section class="results-list">
     {% for result in results %}
       <div class="result-item">
         <div class="issue-title">{{ result.issue.title }}</div>
         <div class="bar-chart">
-          <div class="bar support" data-width="{{ (result.agree / result.total * 100) if result.total > 0 else 0 }}">
-            {{ result.agree }}%
+          <div class="bar support" style="width: {{ (result.agree / result.total * 100) if result.total > 0 else 0 }}%">
+            <span>{{ result.agree }}%</span>
           </div>
-          <div class="bar neutral" data-width="{{ (result.not_sure / result.total * 100) if result.total > 0 else 0 }}">
-            {{ result.not_sure }}%
+          <div class="bar neutral" style="width: {{ (result.not_sure / result.total * 100) if result.total > 0 else 0 }}%">
+            <span>{{ result.not_sure }}%</span>
           </div>
-          <div class="bar oppose" data-width="{{ (result.disagree / result.total * 100) if result.total > 0 else 0 }}">
-            {{ result.disagree }}%
+          <div class="bar oppose" style="width: {{ (result.disagree / result.total * 100) if result.total > 0 else 0 }}%">
+            <span>{{ result.disagree }}%</span>
           </div>
         </div>
       </div>
     {% endfor %}
   </section>
-  <footer class="results-footer">
-    <a href="{{ url_for('index') }}" class="button">Back to List</a>
+
+  <footer class="text-center mt-4">
+    <a href="{{ url_for('index') }}" class="btn btn-primary">Back to List</a>
   </footer>
 </section>
 {% endblock %}
