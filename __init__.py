@@ -1,6 +1,8 @@
-from flask import Blueprint
+from flask import Blueprint, Flask
 from .config import *
 from .extensions.flask_setup import db, login_manager, admin, init_extensions
+from flask_admin.contrib.sqla import ModelView
+from flask_login import current_user
 
 def create_app():
     app = Flask(__name__)
