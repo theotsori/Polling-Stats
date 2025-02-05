@@ -13,7 +13,7 @@ from werkzeug.security import check_password_hash, generate_password_hash
 # -------------------------
 # Application Configuration
 # -------------------------
-app = Flask(__name__)
+app = Flask(__name__, template_folder='app/templates')
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///votes.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 with open('my_secret_key.txt', 'r') as f:
