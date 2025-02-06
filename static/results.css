@@ -1,102 +1,51 @@
-body {
-    background-color: #f8f9fa;
-    font-family: 'Arial', sans-serif;
-}
+/* results.css */
 
+/* Container for the results page */
 .results-container {
-    max-width: 800px;
-    margin: 40px auto;
-    background: white;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin-top: 2rem;
 }
 
-.title {
-    text-align: center;
-    color: #333;
-    font-size: 22px;
-    font-weight: bold;
-    margin-bottom: 20px;
+/* Styling for each issue card */
+.issue-result {
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-.legend {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    font-size: 14px;
-    color: #555;
-    margin-bottom: 20px;
+/* Card title styling */
+.issue-result .card-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
 }
 
-.legend-item {
-    display: flex;
-    align-items: center;
-    gap: 5px;
+/* Composite progress bar styling */
+.progress {
+  height: 30px;
+  background-color: #e9ecef;
+  border-radius: 5px;
+  overflow: hidden;
 }
 
-.color-box {
-    width: 12px;
-    height: 12px;
-    border-radius: 2px;
-    display: inline-block;
+.progress-bar {
+  font-weight: bold;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.support { background-color: #f79b28; }  /* Orange */
-.neutral { background-color: #c0c0c0; }  /* Gray */
-.oppose { background-color: #6b4caf; }   /* Purple */
-
-.result-item {
-    margin-bottom: 20px;
+/* Vote counts styling */
+.vote-counts {
+  font-size: 0.95rem;
 }
 
-.issue-title {
-    font-size: 16px;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 5px;
-}
-
-.bar-chart {
-    display: flex;
-    height: 30px;
-    border-radius: 5px;
-    overflow: hidden;
-    background: #eee;
-    position: relative;
-}
-
-.bar {
-    height: 100%;
-    text-align: center;
-    color: white;
-    font-size: 14px;
-    font-weight: bold;
-    line-height: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.bar span {
-    padding: 0 5px;
-    font-size: 14px;
-}
-
-.support { background-color: #f79b28; }  /* Orange */
-.neutral { background-color: #c0c0c0; }  /* Gray */
-.oppose { background-color: #6b4caf; }   /* Purple */
-
-.btn-primary {
-    background-color: #007bff;
-    padding: 12px 20px;
-    font-size: 16px;
-    border-radius: 5px;
-    text-decoration: none;
-    color: white;
-}
-
-.btn-primary:hover {
-    background-color: #0056b3;
-    cursor: pointer;
+/* Responsive adjustments */
+@media (max-width: 576px) {
+  .progress {
+    height: 25px;
+  }
+  .issue-result .card-title {
+    font-size: 1.25rem;
+  }
 }

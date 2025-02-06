@@ -1,52 +1,99 @@
-/* Issues List */
+/* index.css */
+
+/* Actions Section */
+.actions {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.actions .button {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: #007bff;
+  color: #fff;
+  border-radius: 0.25rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.actions .button:hover {
+  background-color: #0056b3;
+}
+
+/* Issues List Section */
 .issues-list {
-    margin-top: 20px;
+  margin-bottom: 2rem;
 }
 
-.issue {
-    background: white;
-    padding: 15px;
-    margin-bottom: 15px;
-    border-left: 6px solid #4CAF50;
-    border-radius: 8px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+.issues-list .issue {
+  background-color: #fff;
+  border: 1px solid #e3e6f0;
+  border-radius: 0.25rem;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
-.issue h3 {
-    margin: 0;
-    color: #333;
+.issues-list .issue header h3 {
+  margin-bottom: 0.5rem;
+  color: #007bff;
+  font-size: 1.25rem;
 }
 
-.issue p {
-    color: #666;
-    margin: 10px 0;
+.issues-list .issue p {
+  margin-bottom: 1rem;
 }
 
-/* Voting Section */
+/* Vote Section */
 .vote-section {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
-.vote-button {
-    background-color: #2196F3;
-    color: white;
-    border: none;
-    padding: 6px 12px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background 0.3s ease;
+.vote-section span {
+  font-weight: 500;
+  font-size: 1rem;
 }
 
-.vote-button:hover {
-    background-color: #0b7dda;
+.vote-section form {
+  display: flex;
+  gap: 10px;
 }
 
-/* Results Button */
-.view-results {
-    display: block;
-    text-align: center;
-    margin-top: 20px;
+/* Results Link Section */
+.results-link {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.results-link .button {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: #28a745;
+  color: #fff;
+  border-radius: 0.25rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.results-link .button:hover {
+  background-color: #1e7e34;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 576px) {
+  .vote-section {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .vote-section form {
+    width: 100%;
+    justify-content: space-between;
+  }
 }

@@ -19,14 +19,14 @@
                 <h3>{{ issue.title }}</h3>
             </header>
             <p>{{ issue.description }}</p>
-            <footer class="vote-section">
-                <span>Votes: {{ issue.votes }}</span>
+            <div class="vote-section">
+                <span>Dated: {{ issue.created_at }}</span>
                 <form action="{{ url_for('vote', issue_id=issue.id) }}" method="POST">
                     <button type="submit" name="vote_type" value="agree" class="btn btn-success">Support</button>
                     <button type="submit" name="vote_type" value="not_sure" class="btn btn-warning">Don't Know</button>
                     <button type="submit" name="vote_type" value="disagree" class="btn btn-danger">Oppose</button>
                 </form>                
-            </footer>
+            </div>
         </article>
         {% endfor %}
     {% else %}

@@ -8,37 +8,37 @@
 {% endblock %}
 
 {% block content %}
-<section class="results-container">
-  <header class="text-center">
-    <h2 class="title">Support for Executive Orders and Proposed Actions</h2>
-    <div class="legend">
-      <span class="legend-item"><span class="color-box support"></span> Support</span>
-      <span class="legend-item"><span class="color-box neutral"></span> Don't Know / Refused</span>
-      <span class="legend-item"><span class="color-box oppose"></span> Oppose</span>
-    </div>
-  </header>
-
-  <section class="results-list">
-    {% for result in results %}
-      <div class="result-item">
-        <div class="issue-title">{{ result.issue.title }}</div>
-        <div class="bar-chart">
-          <div class="bar support" style="width: {{ (result.agree / result.total * 100) if result.total > 0 else 0 }}%">
-            <span>{{ result.agree }}%</span>
+<div class="results-container container my-5">
+  <h2 class="text-center text-primary mb-4">Voting Results</h2>
+  {% for result in results %}
+    <div class="issue-result card mb-4">
+      <div class="card-body">
+        <h5 class="card-title">{{ result.issue.title }}</h5>
+        {% if result.total > 0 %}
+          {% set percent_agree = (result.agree / result.total * 100) %}
+          {% set percent_not_sure = (result.not_sure / result.total * 100) %}
+          {% set percent_disagree = (result.disagree / result.total * 100) %}
+          <div class="progress mb-2">
+            <div class="progress-bar bg-success" role="progressbar" style="width: {{ percent_agree|round(2) }}%;" aria-valuenow="{{ result.agree }}" aria-valuemin="0" aria-valuemax="{{ result.total }}">
+              {{ percent_agree|round(1) }}%
+            </div>
+            <div class="progress-bar bg-warning" role="progressbar" style="width: {{ percent_not_sure|round(2) }}%;" aria-valuenow="{{ result.not_sure }}" aria-valuemin="0" aria-valuemax="{{ result.total }}">
+              {{ percent_not_sure|round(1) }}%
+            </div>
+            <div class="progress-bar bg-danger" role="progressbar" style="width: {{ percent_disagree|round(2) }}%;" aria-valuenow="{{ result.disagree }}" aria-valuemin="0" aria-valuemax="{{ result.total }}">
+              {{ percent_disagree|round(1) }}%
+            </div>
           </div>
-          <div class="bar neutral" style="width: {{ (result.not_sure / result.total * 100) if result.total > 0 else 0 }}%">
-            <span>{{ result.not_sure }}%</span>
-          </div>
-          <div class="bar oppose" style="width: {{ (result.disagree / result.total * 100) if result.total > 0 else 0 }}%">
-            <span>{{ result.disagree }}%</span>
-          </div>
+        {% else %}
+          <p class="text-muted">No votes recorded yet.</p>
+        {% endif %}
+        <div class="vote-counts">
+          <span class="text-success me-3">Support: {{ result.agree }}</span>
+          <span class="text-warning me-3">Don't Know: {{ result.not_sure }}</span>
+          <span class="text-danger">Oppose: {{ result.disagree }}</span>
         </div>
       </div>
-    {% endfor %}
-  </section>
-
-  <footer class="text-center mt-4">
-    <a href="{{ url_for('index') }}" class="btn btn-primary">Back to List</a>
-  </footer>
-</section>
+    </div>
+  {% endfor %}
+</div>
 {% endblock %}

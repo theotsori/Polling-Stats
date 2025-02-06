@@ -1,40 +1,37 @@
-/* General Styling */
+/* General Styles */
 body {
     font-family: 'Poppins', sans-serif;
+    background-color: #f8f9fa;
+    color: #343a40;
     margin: 0;
-    padding: 0;
-    background-color: #f4f4f9;
-    color: #333;
 }
 
-/* Container for Page Content */
-.container {
-    max-width: 900px;
-    margin: 40px auto;
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+/* Navbar Styles */
+.navbar {
+    background: #007bff;
+    padding: 1rem 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
-
-/* Auth Links Styling */
-.auth-links {
+.navbar .container {
     display: flex;
-    justify-content: flex-end;
-    padding: 15px;
-    background: #333;
-    color: white;
+    justify-content: space-between;
+    align-items: center;
 }
-
-.auth-links a {
-    color: #f0f0f0;
-    text-decoration: none;
-    margin-left: 15px;
+.navbar .logo {
+    color: #fff;
+    font-size: 1.5rem;
     font-weight: bold;
+    text-decoration: none;
 }
-
-.auth-links a:hover {
-    color: #4CAF50;
+.navbar nav a {
+    color: #fff;
+    margin-left: 15px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+.navbar nav a:hover {
+    color: #f8d210;
 }
 
 /* Flash Messages */
@@ -44,30 +41,31 @@ body {
     right: 20px;
     z-index: 1000;
 }
-
 .flash {
-    padding: 10px 20px;
-    margin: 5px;
+    padding: 10px 15px;
     border-radius: 5px;
-    color: white;
+    margin-bottom: 10px;
     font-weight: bold;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+.flash.success { background: #28a745; color: #fff; }
+.flash.error { background: #dc3545; color: #fff; }
+.flash.info { background: #17a2b8; color: #fff; }
+
+/* Main Content */
+main.container {
+    margin-top: 30px;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.flash.error { background-color: #e74c3c; }
-.flash.success { background-color: #2ecc71; }
-.flash.info { background-color: #3498db; }
-
-/* Buttons */
-.button {
-    display: inline-block;
-    padding: 12px 20px;
-    background: #4CAF50;
-    color: white;
-    border-radius: 6px;
-    text-decoration: none;
-    transition: background 0.3s ease;
-}
-
-.button:hover {
-    background: #388E3C;
+/* Footer Styles */
+footer {
+    background: #343a40;
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: 30px;
 }

@@ -1,43 +1,53 @@
-body {
-    background-color: #f7f9fc;
-    font-family: 'Arial', sans-serif;
-    color: #333;
+/* issue.css */
+
+/* Container: Limit width for better readability */
+.container.my-5 {
+  max-width: 600px;
 }
 
-.container {
-    max-width: 600px;
-}
-
+/* Card: Enhance visual appeal with subtle rounding and clean background */
 .card {
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border: none;
+  border-radius: 10px;
+  background-color: #ffffff;
 }
 
-h2 {
-    color: #007bff;
+/* Card Heading: Use a modern, clean font and attractive color */
+.card h2 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 2rem;
+  font-weight: 600;
 }
 
-button {
-    background-color: #007bff;
-    border: none;
-    font-size: 16px;
-    font-weight: bold;
+/* Form Controls: Smooth focus transition with consistent border radius */
+.issue-form .form-control {
+  border-radius: 5px;
+  transition: border-color 0.3s ease;
 }
 
-button:hover {
-    background-color: #0056b3;
-    cursor: pointer;
+.issue-form .form-control:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
-textarea {
-    resize: none;
+/* Submit Button: Slight rounding and smooth color transition for interactivity */
+.issue-form button[type="submit"] {
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
 }
 
-.form-group label {
-    font-weight: bold;
+.issue-form button[type="submit"]:hover {
+  background-color: #0056b3;
 }
 
-.small {
-    color: #6c757d;
+/* Additional Text Styling: Ensure subtle, refined details */
+.card .text-muted {
+  font-size: 0.875rem;
+}
+
+/* Optional: Reinforce consistent background for the entire page */
+body {
+  background-color: #f8f9fa;
 }

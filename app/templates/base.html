@@ -14,7 +14,7 @@
   <header>
     <div class="navbar">
       <div class="container">
-        <a class="logo" href="{{ url_for('index') }}">Voting App</a>
+        <a class="logo" href="{{ url_for('index') }}">AgoraVoice</a>
         <nav>
           {% if current_user.is_authenticated %}
             <span>Welcome, {{ current_user.username }}</span>
@@ -33,7 +33,7 @@
 
   <!-- Main Content Area -->
   <main class="container">
-    <h1>Community Issues Voting</h1>
+    <h1>AgoraVoice</h1>
     {% block content %}{% endblock %}
   </main>
 
